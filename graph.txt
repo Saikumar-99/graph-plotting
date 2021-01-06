@@ -1,0 +1,59 @@
+n=[5,4,3,2,1]
+li=[]
+l=0
+count=0
+le=[]
+flag=0
+min=0
+max=n[0]
+for i in range(len(n)):
+    level=[]
+    if(i%2==0):
+        for j in range(n[i]):
+            if(flag==1):
+                l+=1
+            count+=1
+            le.append(l)
+            li.append(['/',l,count])
+            flag=1
+    else:
+        for j in range(n[i]):
+            if(flag==0):
+                l-=1
+            count+=1
+            le.append(l)
+            li.append(['\\',l,count])
+            flag=0
+le=(set(le))
+le=list(le)
+le.sort()
+ans=[]
+for i in le:
+    l=[]
+    for j in li:
+        if(j[1]==i):
+            l.append(j)
+    ans.append(l)
+for i in reversed(ans):
+    prev=0
+    s=""
+    for j in i:
+        s=s+(' '*(j[2]-prev))
+        s=s+j[0]
+        prev=j[2]
+    print(s)
+
+
+
+output:-
+
+
+     / \
+    /   \     / \
+   /     \   /   \ /
+  /       \ /
+ /
+
+
+
+
